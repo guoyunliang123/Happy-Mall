@@ -12,7 +12,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      page: path.resolve(__dirname, 'src/page')
+      page: path.resolve(__dirname, 'src/page'),
+      component: path.resolve(__dirname, 'src/component')
     }
   },
   module: {
@@ -76,7 +77,8 @@ module.exports = {
   plugins: [
     // 处理 html 文件
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: './fluidicon.png'
     }),
     // 独立 css 文件
     new ExtractTextPlugin("css/[name].css"),
@@ -89,6 +91,9 @@ module.exports = {
   ],
   devServer: {
     // contentBase: './dist'
-    port: 8086
+    port: 8086,
+    historyApiFallback: {
+      index: '/dist/index.html'
+    }
   }
 };
