@@ -5,21 +5,30 @@ import { BrowserRouter as Router, Redirect, Route, Link, Switch } from 'react-ro
 import Layout from 'component/layout/index.jsx';
 // 页面
 import Home from 'page/home/index.jsx';
+import Login from 'page/login/index.jsx';
+import ErrorPage from 'page/error/index.jsx';
+import UserList from 'page/user/index.jsx';
 
 class App extends React.Component {
   render() {
+    let LayoutRouter = (
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/product" exact component={Home} />
+          <Route path="/product-category" exact component={Home} />
+          <Route path="/user/index" exact component={UserList} />
+          <Redirect exact from="/user" to="/user/index" />
+          <Route component={ErrorPage} />
+        </Switch>
+      </Layout>
+    );
     return (
       <Router>
-        <Layout>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/product" exact component={Home} />
-            <Route path="/product-category" exact component={Home} />
-            <Route path="/order" exact component={Home} />
-            <Route path="/user" exact component={Home} />
-            {/* <Redirect from="*" to="/" /> */}
-          </Switch>
-        </Layout>
+        <Switch>
+          <Route path="/login" component={Login}/>
+          <Route path="/" render={ props => ( LayoutRouter )} />
+        </Switch>
       </Router>
     )
   }
