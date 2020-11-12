@@ -5,7 +5,6 @@ const _mm = new MUtil();
 class Product {
   // 获取商品列表
   getProductList(listParam) {
-    console.log(listParam);
     let url = '';
     let data = {};
     if(listParam.listType === 'list') {
@@ -92,13 +91,29 @@ class Product {
     })
   }
   // 获取一级品类列表
-  getCreatoryList(parentCategoryId) {
+  getCategoryList(parentCategoryId) {
     return _mm.request({
       type: 'post',
       url: '/manage/category/get_category.do',
       data: {
         categoryId: parentCategoryId || 0
       }
+    })
+  }
+  // 新增商品品类
+  saveCategory(category) {
+    return _mm.request({
+      type: 'post',
+      url: '/manage/category/add_category.do',
+      data: category
+    })
+  }
+  // 更新品类名称
+  updateCategoryName(category) {
+    return _mm.request({
+      type: 'post',
+      url: '/manage/category/set_category_name.do',
+      data: category
     })
   }
 }

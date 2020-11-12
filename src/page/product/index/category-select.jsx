@@ -46,7 +46,7 @@ class CategorySelect extends React.Component {
   }
   // 加载一级分类
   loadFirstCreatory() {
-    _product.getCreatoryList().then(res => {
+    _product.getCategoryList().then(res => {
       this.setState({
         firstCreatoryList: res
       })
@@ -57,7 +57,7 @@ class CategorySelect extends React.Component {
 
   // 加载二级品类
   loadSecondCategory() {
-    _product.getCreatoryList(this.state.firstCreatoryId).then(res => {
+    _product.getCategoryList(this.state.firstCreatoryId).then(res => {
       this.setState({
         secondCreatoryList: res
       })
