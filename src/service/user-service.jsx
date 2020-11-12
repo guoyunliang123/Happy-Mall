@@ -46,7 +46,7 @@ class User {
     };
     return {
       status: true,
-      mas: '验证通过！'
+      msg: '验证通过！'
     }
   }
 }
