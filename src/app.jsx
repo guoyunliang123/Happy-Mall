@@ -8,6 +8,8 @@ import Home from 'page/home/index.jsx';
 import ProductRouter from 'page/product/router.jsx';
 import Login from 'page/login/index.jsx';
 import ErrorPage from 'page/error/index.jsx';
+import OrderList from 'page/order/index.jsx';
+import OrderDetail from 'page/order/detail.jsx';
 import UserList from 'page/user/index.jsx';
 
 class App extends React.Component {
@@ -18,7 +20,10 @@ class App extends React.Component {
           <Route path="/" exact component={Home} />
           <Route path="/product" component={ProductRouter} />
           <Route path="/product-category" component={ProductRouter} />
-          <Route path="/user/index" exact component={UserList} />
+          <Route path="/order/index" component={OrderList} />
+          <Route path="/order/detail/:orderNumber" component={OrderDetail} />
+          <Route path="/user/index" component={UserList} />
+          <Redirect exact from="/order" to="/order/index" />
           <Redirect exact from="/user" to="/user/index" />
           <Route component={ErrorPage} />
         </Switch>
